@@ -9,7 +9,7 @@ let originalNumbersOutput = document.getElementById("provided-numbers");
 const lengthOriginalNumbers = 5;
 const minStartOriginalNumbers = 1;
 const maxEndOriginalNumbers = 100;
-const timeOutToStart = 5000;
+const timeOutToStart = 1000;
 
 const originalNumbersArray = [];
 
@@ -26,13 +26,40 @@ originalNumbersOutput.append( "memorizza i seguenti numeri, hai 30 secondi: ",  
 
 // 2 -- faccio partire un timer di 30 secondi alla fine del quale aggiungo la classe none al css riferito all'elemento in cui sono appesi i numeri generati, facendoli sparire
 const countDown = setTimeout(timeOutHandler, timeOutToStart);
-console.log("countdown", countDown);
 
+// - nel contempo (in realtà leggermente dopo) faccio comparire n5 prompt che chiedono all'utente di inserire i valori precedentemente visualizzati uno per volta
+setTimeout (function() {
+    
+    const userNumbersArray = [];
+    let userNumber = 0;
 
-// - nel contempo faccio comparire n5 prompt che chiedono all'utente di inserire i valori precedentemente visualizzati uno per volta
-// - inserisco i 5 valori forniti dall'utente in un array
+    for (let i = 0; i < lengthOriginalNumbers; i++) {
+        userNumber = parseInt(prompt("inserisci un numero che ti ricordi"))
+        console.log("user number digitato", userNumber);
 
-// 3 -- con la funzione includes cerco di capire quali e quanti numeri dell'array contenente le risposte fornite dall'utente coincidono con l'array originalNumbers
+        // - inserisco i 5 valori forniti dall'utente in un array
+        userNumbersArray.push(userNumber)
+    }
+
+    
+    // 3 -- con la funzione includes cerco di capire quali e quanti numeri dell'array contenente le risposte fornite dall'utente coincidono con l'array originalNumbers
+    // - creo array che conterrà eventuali numeri ricordati correttamente
+    let successfullNumbersArray = [];
+    
+    // - paragono l'array originale con i numeri generati dall'utente
+    if (userNumbersArray.includes(originalNumbersArray)) {
+        // pusho gli elementi in comune nell'array appena creato
+        successfullNumbersArray.push(userNumbersArray);
+        alert("test")
+        console.log("test", successfullNumbersArray);
+    }
+     
+    console.log("userNumbersArray", userNumbersArray);
+    console.log("originalNumbersArray", originalNumbersArray);
+  
+
+}, timeOutToStart);
+
 
 
 // FUNCTIONS (TO PREPARE GAME)
