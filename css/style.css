@@ -1,0 +1,18 @@
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* MAIN */
+
+h2{
+    padding-top: 15%;
+    text-align: center;
+}
+
+.d-none{
+    display: none;
+}
