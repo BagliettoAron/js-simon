@@ -3,9 +3,24 @@
 // Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei numeri da indovinare sono stati individuati.
 
 // 1 -- prelevo l'elemento dall'html su cui voglio appendere i numeri, 
+originalNumbersOutput = document.getElementById("provided-numbers");
 
 // - genero 5 numeri casuali (da 1 a 100) con la funzione mathrandom 
-// - pusho in un array chiamato originalNumbers
+lengthOriginalNumbers = 5;
+minStartOriginalNumbers = 1;
+maxEndOriginalNumbers = 100;
+
+const originalNumbersArray = [];
+
+for (let i = 0; i < lengthOriginalNumbers; i++) {
+    originalNumbers = getRndInteger(minStartOriginalNumbers, maxEndOriginalNumbers);
+    originalNumbersArray.push(originalNumbers);
+}
+
+console.log(originalNumbersArray);
+
+// - pusho in un array chiamato originalNumbersArray
+
 // - appendo l'array all'elemento prelevato
 
 
@@ -19,3 +34,8 @@
 // 3 -- con la funzione includes cerco di capire quali e quanti numeri dell'array contenente le risposte fornite dall'utente coincidono con l'array originalNumbers
 
 
+// FUNCTIONS (TO PREPARE GAME)
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
